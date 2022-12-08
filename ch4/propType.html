@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prop type</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function Btn({ text, fontSize = 19 }) {
+      return <button
+        style={{
+          backgroundColor: 'tomato',
+          color: "#fff",
+          padding: '10px 20px',
+          border: 0,
+          borderRadius: 10,
+          fontSize
+        }}>{text}</button>
+    }
+
+    Btn.propTypes = {
+      text: PropTypes.string.isRequired,
+      fontSize: PropTypes.number
+    };
+
+    function App() {
+
+      return (
+        <div>
+          <Btn text="Confirm button" fontSize={18} />
+          <Btn text="test" />
+        </div>
+      );
+    }
+    const root = document.querySelector('#root');
+    ReactDOM.render(<App />, root);
+  </script>
+</body>
+
+</html>
